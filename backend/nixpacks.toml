@@ -1,0 +1,13 @@
+[build]
+pkgManager = "npm"
+
+[build.nixpkgs]
+nodejs = "18"
+
+[[phases]]
+name = "setup"
+cmds = ["npm install"]
+
+[[phases]]
+name = "build"
+cmds = []
