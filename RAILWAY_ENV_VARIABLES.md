@@ -32,7 +32,7 @@ LOG_LEVEL=info
 # Set these in Railway Frontend Service → Variables
 
 # API Base URL (set to your backend domain)
-VITE_API_BASE_URL=https://your-backend-domain.up.railway.app/api
+VITE_API_URL=https://your-backend-domain.up.railway.app/api
 
 ---
 

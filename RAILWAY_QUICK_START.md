@@ -23,7 +23,7 @@ Open [frontend/src/services/api.js](frontend/src/services/api.js) and add:
 ```javascript
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 console.log('API Base URL:', API_BASE_URL);
 
@@ -116,7 +116,7 @@ FRONTEND_URL=https://your-frontend-domain.up.railway.app
 4. Go to **"Variables"** and add:
 
 ```
-VITE_API_BASE_URL=https://your-backend-domain.up.railway.app/api
+VITE_API_URL=https://your-backend-domain.up.railway.app/api
 ```
 
 *Get backend domain from Backend service dashboard*
@@ -163,7 +163,7 @@ After deployment, you'll get domains:
 | `MONGODB_URI` | ✓ | | `${{ services.mongodb.DATABASE_URL }}` |
 | `JWT_SECRET` | ✓ | | (generate new random key) |
 | `FRONTEND_URL` | ✓ | | `https://frontend.up.railway.app` |
-| `VITE_API_BASE_URL` | | ✓ | `https://backend.up.railway.app/api` |
+| `VITE_API_URL` | | ✓ | `https://backend.up.railway.app/api` |
 
 ---
 
@@ -179,12 +179,12 @@ After deployment, you'll get domains:
 
 2. **Frontend shows blank**
    - Check build output in logs
-   - Verify `VITE_API_BASE_URL` is set
+   - Verify `VITE_API_URL` is set
    - Clear browser cache (Ctrl+Shift+Delete)
    - Check console for errors (F12)
 
 3. **Frontend can't reach backend**
-   - Verify `VITE_API_BASE_URL` has correct backend domain
+   - Verify `VITE_API_URL` has correct backend domain
    - Check CORS is enabled in backend:
      ```javascript
      app.use(cors({
@@ -210,7 +210,7 @@ After deployment, you'll get domains:
 | `EADDRINUSE: port already in use` | Use `process.env.PORT` instead of hardcoded port |
 | `MongooseError: Timeout` | Check MongoDB service running or connection string |
 | `JWT_SECRET undefined` | Add `JWT_SECRET` to backend variables |
-| `API returns 404` | Verify `VITE_API_BASE_URL` is correct |
+| `API returns 404` | Verify `VITE_API_URL` is correct |
 | `Blank frontend page` | Check browser console for build errors |
 
 ---
@@ -221,7 +221,7 @@ After deployment works:
 1. In Railway project settings
 2. Add custom domain
 3. Update DNS records
-4. Update `FRONTEND_URL` and `VITE_API_BASE_URL`
+4. Update `FRONTEND_URL` and `VITE_API_URL`
 
 ---
 

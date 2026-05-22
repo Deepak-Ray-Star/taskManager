@@ -56,7 +56,7 @@
 | Health endpoint | ✅ Ready | `/api/health` available |
 | Frontend build | ✅ Ready | Vite build configured |
 | React version | ✅ Ready | React 18+ |
-| API configuration | ⚠️ Check | Need to verify VITE_API_BASE_URL usage |
+| API configuration | ⚠️ Check | Need to verify VITE_API_URL usage |
 
 ---
 
@@ -86,7 +86,7 @@
 │  ┌─────────────────────────────────────────────────┐   │
 │  │         Frontend Service (React + Vite)         │   │
 │  │  URL: your-app-frontend.up.railway.app          │   │
-│  │  Env: VITE_API_BASE_URL                         │   │
+│  │  Env: VITE_API_URL                         │   │
 │  └─────────────┬──────────────────────────────────┘   │
 │                │                                        │
 │                │  HTTPS                                │
@@ -122,7 +122,7 @@ MONGODB_URI=<database connection string>
 
 ### Frontend (Required)
 ```
-VITE_API_BASE_URL=<your backend domain>/api
+VITE_API_URL=<your backend domain>/api
 ```
 
 ---
@@ -141,8 +141,8 @@ VITE_API_BASE_URL=<your backend domain>/api
 
 - [ ] **CORS Errors** → Verify `FRONTEND_URL` is set correctly
 - [ ] **MongoDB Connection Fails** → Check connection string and MongoDB service running
-- [ ] **Frontend Blank Page** → Check `VITE_API_BASE_URL` and build output
-- [ ] **API 404 Errors** → Verify backend domain in `VITE_API_BASE_URL`
+- [ ] **Frontend Blank Page** → Check `VITE_API_URL` and build output
+- [ ] **API 404 Errors** → Verify backend domain in `VITE_API_URL`
 - [ ] **JWT Token Issues** → Generate new `JWT_SECRET`
 - [ ] **Port Conflicts** → Use `process.env.PORT` (already done ✅)
 - [ ] **Build Fails** → Check Node.js dependencies in package.json

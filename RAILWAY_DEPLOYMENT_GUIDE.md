@@ -209,14 +209,14 @@ API_PORT=8080
 Set these in Railway dashboard (Frontend service → Variables):
 
 ```
-VITE_API_BASE_URL=https://your-backend-domain.up.railway.app/api
+VITE_API_URL=https://your-backend-domain.up.railway.app/api
 ```
 
 Then use in your frontend code:
 
 ```javascript
 // src/services/api.js
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -268,7 +268,7 @@ serve -s dist -l $PORT
 ### Link Frontend to Backend
 
 1. Go to Frontend service in Railway
-2. Set variable: `VITE_API_BASE_URL=${{ services.backend.RAILWAY_PUBLIC_DOMAIN }}/api`
+2. Set variable: `VITE_API_URL=${{ services.backend.RAILWAY_PUBLIC_DOMAIN }}/api`
 3. Or manually set the backend domain URL after deployment
 
 ---
@@ -365,13 +365,13 @@ const connectDB = async () => {
 **Error**: `Failed to fetch from API` or `ERR_NAME_NOT_RESOLVED`
 
 **Solutions**:
-1. Check `VITE_API_BASE_URL` is set correctly
+1. Check `VITE_API_URL` is set correctly
 2. Verify backend domain is correct and accessible
 3. Check backend service is running
 
 ```javascript
 // Add this to frontend for debugging
-console.log('API Base URL:', import.meta.env.VITE_API_BASE_URL);
+console.log('API Base URL:', import.meta.env.VITE_API_URL);
 ```
 
 ### Issue 4: Build Fails - Port Already in Use
@@ -460,7 +460,7 @@ api.interceptors.request.use((config) => {
 
 ### Issue 10: Variables Not Loading in Frontend
 
-**Error**: `import.meta.env.VITE_API_BASE_URL` is undefined
+**Error**: `import.meta.env.VITE_API_URL` is undefined
 
 **Solutions**:
 1. Rebuild frontend after adding variables
@@ -470,7 +470,7 @@ api.interceptors.request.use((config) => {
 
 ```javascript
 // Add fallback
-const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 console.log('Using API:', API_URL);
 ```
 
